@@ -18,8 +18,7 @@ const PortfolioScreen = () => {
 
   const rawPositions = useMemo(() => data ?? [], [data]);
   const positions = useMemo(() => consolidatePortfolio(rawPositions), [rawPositions]);
-console.log('RAW tickers:', rawPositions.map(post => post.ticker));
-console.log('CONSOLIDATED tickers:', positions.map(post => post.ticker));
+
   const totals = useMemo(() => {
     const totalMarket = positions.reduce(
       (acc, position) => acc + calcMarketValue(position.quantity, position.last_price),
