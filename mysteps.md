@@ -24,4 +24,7 @@
 * added simple search tab separating the intention of the user
 * I think ticker is okay
 * fix typos on instruments
-
+* start with portfolio integration
+* I separate the financial calcs from the formatters so the logics is not tight to how the ui is being render
+* I had to create a different way for the keys on  keyExtractor because of duplicated keys
+* these repetead key represent different lots per instrument so I've decided to consolidate.

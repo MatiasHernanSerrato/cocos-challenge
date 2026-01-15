@@ -2,7 +2,7 @@
 
 Mobile application developed with **React Native + Expo** as part of the Cocos technical challenge.
 
-The goal of the project is to build a small trading-like mobile app that consumes multiple mocked endpoints, displays market and portfolio information, and allows users to place buy/sell orders.
+The goal of the project is to build a small trading-like mobile app that consumes multiple API endpoints provided for the challenge, displays market and portfolio information, and allows users to place buy/sell orders.
 
 ---
 
@@ -45,8 +45,8 @@ Local component state is used only when necessary (e.g. form state).
 The project is structured by responsibility (screens, components, api, utils) to keep concerns separated and make the codebase easy to scale and maintain.
 
 ### Calculations
-Financial calculations (returns, gains, market value) are isolated in utility functions to ensure correctness, reusability and testability.
-
+Financial calculations and UI formatting are separated to keep business logic isolated from presentation concerns
+Also the portfolio endpoint returns multiple entries per instrument (representing different acquisition lots). For UI purposes, positions are consolidated by instrument to display total quantity, weighted average cost, and aggregated performance.
 ---
 
 ## 🛠️ Setup & Run Locally
@@ -58,4 +58,6 @@ Financial calculations (returns, gains, market value) are isolated in utility fu
 
 ### Install dependencies
 ```bash
-npm install | yarn 
+npm install
+# or
+yarn install

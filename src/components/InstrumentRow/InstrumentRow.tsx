@@ -1,6 +1,7 @@
 import { Pressable, Text, View } from 'react-native';
-import { calcReturnPct, formatCurrencyARS, formatPct } from '../../utils/utils';
+import { formatCurrencyARS, formatPct } from '../../utils/utils';
 import { Instrument } from '../../types/instruments';
+import { calcReturnPct } from '../../utils/calculations';
 
 type InstrumentRowProps = {
   item: Instrument;
