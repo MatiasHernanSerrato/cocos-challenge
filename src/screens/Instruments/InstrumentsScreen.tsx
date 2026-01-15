@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
-import { getInstruments } from '../api/instruments';
-import type { Instrument } from '../types/instruments';
-import OrderModal from '../components/OrderModal';
-import InstrumentRow from '../components/IntrumentRow';
+import { getInstruments } from '../../api/instruments';
+import type { Instrument } from '../../types/instruments';
+import OrderModal from '../../components/OrderModal';
+import InstrumentRow from '../../components/IntrumentRow';
 
 const InstrumentsScreen = () => {
   const [selected, setSelected] = useState<Instrument | null>(null);

@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import InstrumentsScreen from '../screens/InstrumentsScreen';
+import InstrumentsScreen from '../screens/Instruments';
 // import SearchScreen from '../screens/SearchScreen'; asi voy a dejar las rutas
 // import PortfolioScreen from '../screens/PortfolioScreen'; cuando empiece con estas screens
 

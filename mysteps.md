@@ -17,4 +17,8 @@
     quantity: 1234
 }`
 * created the api call for each of them
+* instruments using style inline until I have defined how I want it looks like.
+* orders modal created but still need works.
+* tabs defined and how the screen will look like
+* added types for components and barrel file for instruments also
 

@@ -1,13 +1,15 @@
 import { Modal, Pressable, Text, View } from 'react-native';
 import { Instrument } from '../../types/instruments';
 
+type OrderModalProps = {
+  instrument: Instrument | null;
+  onClose: () => void;
+};
+
 const OrderModal = ({
   instrument,
   onClose,
-}: {
-  instrument: Instrument | null;
-  onClose: () => void;
-}) => {
+}: OrderModalProps) => {
   return (
     <Modal visible={!!instrument} animationType="slide" transparent onRequestClose={onClose}>
       <Pressable onPress={onClose} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.35)' }} />

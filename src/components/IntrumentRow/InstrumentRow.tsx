@@ -2,13 +2,15 @@ import { Pressable, Text, View } from 'react-native';
 import { calcReturnPct, formatCurrencyARS, formatPct } from '../../utils/utils';
 import { Instrument } from '../../types/instruments';
 
+type InstrumentRowProps = {
+  item: Instrument;
+  onPress: () => void;
+};
+
 export const InstrumentRow = ({
   item,
   onPress,
-}: {
-  item: Instrument;
-  onPress: () => void;
-}) => {
+}: InstrumentRowProps) =>  {
   const ret = calcReturnPct(item.last_price, item.close_price);
   const retLabel = formatPct(ret);
 
