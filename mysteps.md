@@ -21,4 +21,7 @@
 * orders modal created but still need works.
 * tabs defined and how the screen will look like
 * added types for components and barrel file for instruments also
+* added simple search tab separating the intention of the user
+* I think ticker is okay
+* fix typos on instruments
 
