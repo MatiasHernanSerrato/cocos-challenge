@@ -28,3 +28,4 @@
 * I separate the financial calcs from the formatters so the logics is not tight to how the ui is being render
 * I had to create a different way for the keys on  keyExtractor because of duplicated keys
 * these repetead key represent different lots per instrument so I've decided to consolidate.
+* for debugging I had to use staleTime 1 min aprox

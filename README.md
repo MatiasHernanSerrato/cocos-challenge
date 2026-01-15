@@ -47,6 +47,7 @@ The project is structured by responsibility (screens, components, api, utils) to
 ### Calculations
 Financial calculations and UI formatting are separated to keep business logic isolated from presentation concerns
 Also the portfolio endpoint returns multiple entries per instrument (representing different acquisition lots). For UI purposes, positions are consolidated by instrument to display total quantity, weighted average cost, and aggregated performance.
+Since the provided API is a dummy endpoint, responses may change between requests
 ---
 
 ## 🛠️ Setup & Run Locally

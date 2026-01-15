@@ -7,7 +7,7 @@ import { getPortfolio } from '../../api/portfolio';
 import PortfolioRow from '../../components/PortfolioRow';
 
 import { formatCurrencyARS, formatPct } from '../../utils/utils';
-import { calcMarketValue } from '../../utils/calculations';
+import { calcMarketValue, consolidatePortfolio } from '../../utils/calculations';
 
 const PortfolioScreen = () => {
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
@@ -15,8 +15,11 @@ const PortfolioScreen = () => {
     queryFn: getPortfolio,
   });
 
-  const positions = useMemo(() => data ?? [], [data]);
 
+  const rawPositions = useMemo(() => data ?? [], [data]);
+  const positions = useMemo(() => consolidatePortfolio(rawPositions), [rawPositions]);
+console.log('RAW tickers:', rawPositions.map(post => post.ticker));
+console.log('CONSOLIDATED tickers:', positions.map(post => post.ticker));
   const totals = useMemo(() => {
     const totalMarket = positions.reduce(
       (acc, position) => acc + calcMarketValue(position.quantity, position.last_price),
@@ -81,11 +84,7 @@ const PortfolioScreen = () => {
       ) : (
         <FlatList
           data={positions}
-          keyExtractor={(item, index) => {
-            const idPart = item.instrument_id ?? item.ticker ?? 'item';
-            const tickerPart = item.ticker ?? 'NA';
-            return `${idPart}-${tickerPart}-${index}`;
-            }}
+          keyExtractor={(item) => String(item.instrument_id)}
           renderItem={({ item }) => (
             <PortfolioRow position={item} />
           )}
