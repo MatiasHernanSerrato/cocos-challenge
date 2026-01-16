@@ -6,7 +6,7 @@ The goal of the project is to build a small trading-like mobile app that consume
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **React Native**
 - **Expo (Managed Workflow)**
@@ -18,7 +18,7 @@ The goal of the project is to build a small trading-like mobile app that consume
 
 ---
 
-## 📱 Features
+## Features
 
 - Instruments list with market data and calculated returns
 - Portfolio overview with market value, gains and performance
@@ -28,7 +28,7 @@ The goal of the project is to build a small trading-like mobile app that consume
 
 ---
 
-## 🧠 Technical Decisions
+## Technical Decisions
 
 ### Expo
 Expo was chosen to speed up development, reduce configuration overhead and focus on product and user experience rather than native setup. The managed workflow provides everything needed for this challenge while remaining production-ready.
@@ -48,6 +48,9 @@ The project is structured by responsibility (screens, components, api, utils) to
 Financial calculations and UI formatting are separated to keep business logic isolated from presentation concerns
 Also the portfolio endpoint returns multiple entries per instrument (representing different acquisition lots). For UI purposes, positions are consolidated by instrument to display total quantity, weighted average cost, and aggregated performance.
 Since the provided API is a dummy endpoint, responses may change between requests
+
+### Error handling
+API errors are normalized into a typed ApiError to keep messaging consistent across screens. Each screen implements a full state model (loading/error/empty/success) with retry actions. React Query is configured with limited retries for queries and no retries for mutations to avoid duplicate orders
 ---
 
 ## 🛠️ Setup & Run Locally

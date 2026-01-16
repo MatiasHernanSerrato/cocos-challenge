@@ -1,4 +1,4 @@
-import { api } from './client';
+import { api, apiErrorHandler } from './client';
 import type {
   CreateOrderBody,
   CreateOrderResponse,
@@ -7,6 +7,10 @@ import type {
 export const createOrder = async (
   body: CreateOrderBody
 ): Promise<CreateOrderResponse> => {
-  const { data } = await api.post<CreateOrderResponse>('/orders', body);
-  return data;
+  try {
+    const { data } = await api.post<CreateOrderResponse>('/orders', body);
+    return data;
+  } catch (err) {
+    throw apiErrorHandler(err);
+  }
 };

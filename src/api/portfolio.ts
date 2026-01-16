@@ -1,7 +1,11 @@
-import { api } from './client';
+import { api, apiErrorHandler } from './client';
 import type { PortfolioPosition } from '../types/portfolio';
 
 export const getPortfolio = async (): Promise<PortfolioPosition[]> => {
-  const { data } = await api.get<PortfolioPosition[]>('/portfolio');
-  return data;
+  try {
+    const { data } = await api.get<PortfolioPosition[]>('/portfolio');
+    return data;
+  } catch (err) {
+    throw apiErrorHandler(err);
+  }
 };

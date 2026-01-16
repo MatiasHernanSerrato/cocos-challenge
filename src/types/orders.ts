@@ -1,5 +1,6 @@
 export type OrderSide = 'BUY' | 'SELL';
 export type OrderType = 'MARKET' | 'LIMIT';
+export type InputMode = 'QUANTITY' | 'AMOUNT';
 
 type BaseOrderBody = {
   instrument_id: number;

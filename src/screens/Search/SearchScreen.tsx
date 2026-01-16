@@ -3,6 +3,7 @@ import { ActivityIndicator, FlatList, Text, TextInput, View } from 'react-native
 import { useQuery } from '@tanstack/react-query';
 
 import { searchInstruments } from '../../api/search';
+import type { ApiError } from '../../api/client';
 import InstrumentRow from '../../components/InstrumentRow';
 import OrderModal from '../../components/OrderModal';
 
@@ -27,7 +28,10 @@ const SearchScreen = () => {
 
   const enabled = debouncedQuery.length >= 1;
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+  const { data, isLoading, isError, error, refetch, isFetching } = useQuery<
+    Instrument[],
+    ApiError
+  >({
     queryKey: ['search', debouncedQuery],
     queryFn: () => searchInstruments(debouncedQuery),
     enabled,
@@ -68,7 +72,9 @@ const SearchScreen = () => {
         <ActivityIndicator style={{ marginTop: 24 }} />
       ) : isError ? (
         <View style={{ paddingHorizontal: 16 }}>
-          <Text style={{ marginBottom: 8 }}>Error buscando.</Text>
+          <Text style={{ marginBottom: 8 }}>
+            {error?.message ?? 'No se pudo realizar la búsqueda.'}
+          </Text>
           <Text onPress={() => refetch()} style={{ fontWeight: '800' }}>
             Reintentar
           </Text>

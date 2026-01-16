@@ -29,3 +29,7 @@
 * I had to create a different way for the keys on  keyExtractor because of duplicated keys
 * these repetead key represent different lots per instrument so I've decided to consolidate.
 * for debugging I had to use staleTime 1 min aprox
+* start with ordermodal and logic
+* main focused on expo for delivery challenge
+* put robust error handler everyplace I think is neccesary
+* i created also history of orders so I check is working properly. could be a good feature if it's improved.

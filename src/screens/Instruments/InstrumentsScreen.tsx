@@ -7,11 +7,12 @@ import { getInstruments } from '../../api/instruments';
 import type { Instrument } from '../../types/instruments';
 import OrderModal from '../../components/OrderModal';
 import InstrumentRow from '../../components/InstrumentRow';
+import { ApiError } from '../../api/client';
 
 const InstrumentsScreen = () => {
   const [selected, setSelected] = useState<Instrument | null>(null);
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+  const { data, isLoading, isError, error, refetch, isFetching } = useQuery<Instrument[], ApiError>({
     queryKey: ['instruments'],
     queryFn: getInstruments,
   });
@@ -19,9 +20,11 @@ const InstrumentsScreen = () => {
   if (isLoading) return <ActivityIndicator style={{ marginTop: 24 }} />;
 
   if (isError) {
+    const message =
+      (error as { message?: string })?.message ?? 'Error cargando instrumentos.';
     return (
       <View style={{ padding: 16 }}>
-        <Text style={{ marginBottom: 12 }}>Error cargando instrumentos.</Text>
+        <Text style={{ marginBottom: 12 }}>{message}</Text>
         <Text onPress={() => refetch()} style={{ fontWeight: '700' }}>
           Reintentar
         </Text>

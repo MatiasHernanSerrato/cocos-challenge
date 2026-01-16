@@ -2,15 +2,21 @@ import React, { useMemo } from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 
+import type { ApiError } from '../../api/client';
+
 import { getPortfolio } from '../../api/portfolio';
 
 import PortfolioRow from '../../components/PortfolioRow';
 
 import { formatCurrencyARS, formatPct } from '../../utils/utils';
 import { calcMarketValue, consolidatePortfolio } from '../../utils/calculations';
+import { PortfolioPosition } from '../../types/portfolio';
 
 const PortfolioScreen = () => {
-  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+  const { data, isLoading, isError, error, refetch, isFetching } = useQuery<
+    PortfolioPosition[],
+    ApiError
+  >({
     queryKey: ['portfolio'],
     queryFn: getPortfolio,
   });
@@ -46,7 +52,7 @@ const PortfolioScreen = () => {
     return (
       <View style={{ padding: 16 }}>
         <Text style={{ marginBottom: 12 }}>
-          Error cargando el portfolio.
+          {error?.message ?? 'No se pudo cargar el portfolio.'}
         </Text>
         <Text onPress={() => refetch()} style={{ fontWeight: '800' }}>
           Reintentar
