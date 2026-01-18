@@ -42,7 +42,7 @@ const SearchScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ padding: 16 }}>
-        <Text style={{ fontWeight: '800', fontSize: 18 }}>Search</Text>
+        <Text style={{ fontWeight: '800', fontSize: 18 }}>Nueva búsqueda</Text>
 
         <TextInput
           value={query}

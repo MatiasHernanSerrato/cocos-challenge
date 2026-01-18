@@ -13,7 +13,8 @@ describe('utils', () => {
   });
 
   test('formatPct formats with two decimals', () => {
-    expect(formatPct(1)).toBe('1.00%');
-    expect(formatPct(1.235)).toBe('1.24%');
+    expect(formatPct(1)).toBe('+1.00%');
+    expect(formatPct(1.235)).toBe('+1.24%');
+    expect(formatPct(-1.2)).toBe('-1.20%');
   });
 });

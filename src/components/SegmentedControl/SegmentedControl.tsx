@@ -8,7 +8,7 @@ export type SegmentedControlOption<T extends string> = {
 
 type SegmentedControlProps<T extends string> = {
   value: T;
-  options: SegmentedControlOption<T>[];
+  options: ReadonlyArray<SegmentedControlOption<T>>;
   onChange: (next: T) => void;
 };
 

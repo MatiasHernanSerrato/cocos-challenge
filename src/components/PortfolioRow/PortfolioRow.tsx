@@ -4,6 +4,7 @@ import { View, Text } from "react-native";
 import {
   formatCurrencyARS,
   formatPct,
+  getPctColor,
 } from "../../utils/utils";
 import { calcGain, calcMarketValue, calcPerformancePct } from "../../utils/calculations";
 
@@ -39,7 +40,7 @@ const PortfolioRow = ({ position }: { position: PortfolioPosition }) => {
           <Text style={{ fontWeight: '800' }}>
             {formatCurrencyARS(marketValue)}
           </Text>
-          <Text style={{ opacity: 0.85 }}>
+          <Text style={{ opacity: 0.85, color: getPctColor(performancePct) }}>
             {formatCurrencyARS(gain)} · {formatPct(performancePct)}
           </Text>
         </View>

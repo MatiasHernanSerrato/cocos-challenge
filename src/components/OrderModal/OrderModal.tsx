@@ -31,6 +31,16 @@ const ORDER_SIDE_SELL: OrderSide = 'SELL';
 const ORDER_TYPE_MARKET: OrderType = 'MARKET';
 const ORDER_TYPE_LIMIT: OrderType = 'LIMIT';
 
+const SIDE_OPTIONS = [
+  { label: 'Comprar', value: ORDER_SIDE_BUY },
+  { label: 'Vender', value: ORDER_SIDE_SELL },
+] as const;
+
+const TYPE_OPTIONS = [
+  { label: 'Mercado', value: ORDER_TYPE_MARKET },
+  { label: 'Límite', value: ORDER_TYPE_LIMIT },
+] as const;
+
 const INPUT_MODE_QUANTITY: InputMode = 'QUANTITY';
 const INPUT_MODE_AMOUNT: InputMode = 'AMOUNT';
 
@@ -169,7 +179,7 @@ const OrderModal = ({ instrument, onClose }: OrderModalProps) => {
           side,
           type,
           quantity: derivedQuantity,
-          price: type === 'LIMIT' ? limitPrice ?? undefined : undefined,
+          price: type === ORDER_TYPE_LIMIT ? limitPrice ?? undefined : undefined,
           status: data.status,
           remoteId: data.id,
         });
@@ -187,7 +197,7 @@ const OrderModal = ({ instrument, onClose }: OrderModalProps) => {
           side,
           type,
           quantity: derivedQuantity,
-          price: type === 'LIMIT' ? limitPrice ?? undefined : undefined,
+          price: type === ORDER_TYPE_LIMIT ? limitPrice ?? undefined : undefined,
           status: 'REJECTED',
         });
       } catch (err) {
@@ -258,31 +268,25 @@ const OrderModal = ({ instrument, onClose }: OrderModalProps) => {
         </Text>
 
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontWeight: '800', marginBottom: 8 }}>Side</Text>
+          <Text style={{ fontWeight: '800', marginBottom: 8 }}>Operación</Text>
           <SegmentedControl
             value={side}
-            options={[
-              { label: ORDER_SIDE_BUY, value: ORDER_SIDE_BUY },
-              { label: ORDER_SIDE_SELL, value: ORDER_SIDE_SELL },
-            ]}
+            options={SIDE_OPTIONS}
             onChange={setSide}
           />
         </View>
 
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontWeight: '800', marginBottom: 8 }}>Order Type</Text>
+          <Text style={{ fontWeight: '800', marginBottom: 8 }}>Tipo de Orden</Text>
           <SegmentedControl
             value={type}
-            options={[
-              { label: ORDER_TYPE_MARKET, value: ORDER_TYPE_MARKET },
-              { label: ORDER_TYPE_LIMIT, value: ORDER_TYPE_LIMIT },
-            ]}
+            options={TYPE_OPTIONS}
             onChange={setType}
           />
         </View>
 
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontWeight: '800', marginBottom: 8 }}>Input Mode</Text>
+          <Text style={{ fontWeight: '800', marginBottom: 8 }}>Por</Text>
           <SegmentedControl
             value={mode}
             options={[

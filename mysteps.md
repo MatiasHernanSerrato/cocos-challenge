@@ -33,3 +33,7 @@
 * main focused on expo for delivery challenge
 * put robust error handler everyplace I think is neccesary
 * i created also history of orders so I check is working properly. could be a good feature if it's improved.
+* start looking into some details with some time I have before deliver
+* adding test for intstrumentRow and portfolioRow. this had to be one component instead of two. at least the row
+* checking all the english I left in the ui side, i'm not installing i18n
+* observation, looks like the api works for me in english and spanish, but I think one language should be used for this

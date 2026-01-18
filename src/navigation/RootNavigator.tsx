@@ -9,9 +9,9 @@ const Tab = createBottomTabNavigator();
 const RootNavigator = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Market" component={InstrumentsScreen} />
-       <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Portfolio" component={PortfolioScreen} />
+      <Tab.Screen name="Mercado" component={InstrumentsScreen} />
+      <Tab.Screen name="Buscar" component={SearchScreen} />
+      <Tab.Screen name="Portafolio" component={PortfolioScreen} />
       <Tab.Screen name="Historial" component={OrdersHistoryScreen} />
     </Tab.Navigator>
   );

@@ -8,6 +8,7 @@ export const createOrder = async (
   body: CreateOrderBody
 ): Promise<CreateOrderResponse> => {
   try {
+    console.log('Creating order with body:', body);
     const { data } = await api.post<CreateOrderResponse>('/orders', body);
     return data;
   } catch (err) {

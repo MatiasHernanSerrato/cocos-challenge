@@ -1,5 +1,5 @@
 import { Pressable, Text, View } from 'react-native';
-import { formatCurrencyARS, formatPct } from '../../utils/utils';
+import { formatCurrencyARS, formatPct, getPctColor } from '../../utils/utils';
 import { Instrument } from '../../types/instruments';
 import { calcReturnPct } from '../../utils/calculations';
 
@@ -16,7 +16,7 @@ export const InstrumentRow = ({
   const retLabel = formatPct(ret);
 
   return (
-    <Pressable onPress={onPress} style={{ padding: 16, borderBottomWidth: 1, borderColor: '#eee' }}>
+    <Pressable onPress={onPress} style={{ padding: 16, borderBottomWidth: 1, borderColor: '#eee' }} testID="instrument-row">
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
         <View style={{ flex: 1 }}>
           <Text style={{ fontWeight: '800', fontSize: 16 }}>{item.ticker}</Text>
@@ -25,7 +25,7 @@ export const InstrumentRow = ({
 
         <View style={{ alignItems: 'flex-end' }}>
           <Text style={{ fontWeight: '700' }}>{formatCurrencyARS(item.last_price)}</Text>
-          <Text style={{ opacity: 0.9 }}>{retLabel}</Text>
+          <Text style={{ opacity: 0.9, color: getPctColor(ret) }}>{retLabel}</Text>
         </View>
       </View>
     </Pressable>
